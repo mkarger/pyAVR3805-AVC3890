@@ -5,17 +5,24 @@ package avr3805;
 /*
 Definition of Terms:
  - system: a Denon AVR or AVC Receiver
- - controller: a device used to control a system remotely, such as a touch screen or a Raspberry Pi
+ - controller: a device used to control a system remotely, such as a touch 
+   screen or a Raspberry Pi
 
-The serial protocol documentation defines three message types: COMMAND, EVENT, and RESPONSE.
+The serial protocol documentation defines three message types: COMMAND, EVENT, 
+and RESPONSE.
 
 COMMAND: The message sent to a system from a controller.
 
-EVENT: The message sent to a controller from a system. An event message is sent when a system is operated directly (via the front panel or the IR remote) and the state changes.
+EVENT: The message sent to a controller from a system. An event message is sent 
+when a system is operated directly (via the front panel or the IR remote) and 
+the state changes.
 
 RESPONSE: The message sent to a controller from a system if the 'request command'
 
-Messages consist of ASCII codes (0x20-0x7F, or printable characters, and 0x0D, or Carriage Return), and generally take the form "<control code> + <parameter> + 0x0D (CR)."
+Messages consist of ASCII codes (0x20-0x7F, or printable characters, and 0x0D, 
+or Carriage Return), and generally take the form:
+
+<control code> + <parameter> + 0x0D (CR)
 
 Examples:
  - Power on from standby state: PWON<CR> (0x50 0x57 0x4F 0x4E 0x0D)
